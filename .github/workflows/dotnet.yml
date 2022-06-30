@@ -14,6 +14,7 @@ jobs:
 
     steps:
     - name: reverse file name
+      working-directory: ./Play.Catalog/src/Play.Catalog.Service
       run: ls -laR
     - uses: actions/checkout@v3
     - name: Setup .NET
@@ -21,8 +22,11 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
+      working-directory: ./Play.Catalog/src/Play.Catalog.Service
       run: dotnet restore
     - name: Build
+      working-directory: ./Play.Catalog/src/Play.Catalog.Service
       run: dotnet build --no-restore
     - name: Test
+      working-directory: ./Play.Catalog/src/Play.Catalog.Service
       run: dotnet test --no-build --verbosity normal
