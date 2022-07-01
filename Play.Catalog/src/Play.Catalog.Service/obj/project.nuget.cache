@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0vWXDPievLK+nKndLhrrMuGmg46Nisal49zynXaHoZxynENjYdZ07p5mwBvqiyL9bLs+NB7+kKI8Dws6vlNk/Q==",
+  "dgSpecHash": "ljDBHXVbNpWWCKa/RS7uz3rlzXxLqfTnhXhMtmX0PpCnN4ftfxMaCmVB3FPVNXWHU9nklHJuCFde+0bYTGo6qg==",
   "success": true,
   "projectFilePath": "/home/khaled/Downloads/Projects/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
   "expectedPackageFiles": [
@@ -121,16 +121,5 @@
     "/home/khaled/.nuget/packages/system.xml.readerwriter/4.3.1/system.xml.readerwriter.4.3.1.nupkg.sha512",
     "/home/khaled/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Play.Catalog.Service depends on Play.Common (>= 1.0.0) but Play.Common 1.0.0 was not found. An approximate best match of Play.Common 1.0.2 was resolved.",
-      "libraryId": "Play.Common",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

@@ -15,7 +15,7 @@ namespace Play.Catalog.Service.Controllers
     {
         /// private readonly ILogger<ItemsController> _logger;
         private readonly IRepository<Item> itemsRepository;
-
+        private static int requestCounter = 0;
         private static readonly List<ItemDto> items = new List<ItemDto>()
         {
             new ItemDto(Guid.NewGuid(), "potion", "Resotes asmall amoutn Hp", 5, DateTimeOffset.UtcNow),
@@ -31,9 +31,21 @@ namespace Play.Catalog.Service.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ItemDto>> GetAsync()
+        public async Task<ActionResult<IEnumerable<ItemDto>>> GetAsync()
         {
-            return (await itemsRepository.GetAllAsync()).Select(item => item.AsDto());
+            requestCounter++;
+            Console.WriteLine($"Request {requestCounter}: Starting..");
+            
+            if(requestCounter <= 2){
+                Console.WriteLine($"Request {requestCounter}: Dealing..");
+                await Task.Delay(TimeSpan.FromSeconds(10));
+            }
+            if(requestCounter <= 4){
+                Console.WriteLine($"Request {requestCounter}:  500(Internal Server Error)");
+                return StatusCode(500);
+            }
+            var items = (await itemsRepository.GetAllAsync()).Select(item => item.AsDto());
+            return Ok(items);
         }
 
         // GET /items/{id}/
