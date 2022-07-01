@@ -1,0 +1,32 @@
+name: .NET
+
+on:
+  push:
+      branches:
+      - main
+      - dev3fyfy
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+   # - name: reverse file name
+      #working-directory: ./Play.Catalog/src/Play.Catalog.Service
+     # run: ls -laR
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version:  6.0.x
+    - name: Restore dependencies
+      working-directory: ./Play.Catalog/src/Play.Catalog.Service
+      run: dotnet restore
+    - name: Build
+      working-directory: ./Play.Catalog/src/Play.Catalog.Service
+      run: dotnet build --no-restore
+    - name: Test
+      working-directory: ./Play.Catalog/src/Play.Catalog.Service
+      run: dotnet test --no-build --verbosity normal
